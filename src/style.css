@@ -114,7 +114,7 @@ ul { list-style: none; }
   font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 900;
   letter-spacing: -1px;
 }
-.nav-logo span { color: var(--primary-500); }
+.nav-logo img { height: 40px; width: auto; display: block; }
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
   font-size: .88rem; font-weight: 500; color: #999;

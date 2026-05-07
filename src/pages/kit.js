@@ -11,7 +11,7 @@ export function render(app) {
   app.innerHTML = `
     <nav class="navbar scrolled">
       <div class="container">
-        <a href="#/" class="nav-logo">J<span>Liga</span></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
         <div class="nav-links">
           <a href="#/aula" style="color:#666">← Voltar à aula</a>
         </div>

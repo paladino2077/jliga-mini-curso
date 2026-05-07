@@ -7,7 +7,7 @@ export function render(app) {
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
       <div class="container">
-        <a href="#/" class="nav-logo">J<span>Liga</span></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
         <div class="nav-links" id="navLinks">
           <a href="#beneficios-section">Benefícios</a>
           <a href="#como-funciona-section">Como Funciona</a>
