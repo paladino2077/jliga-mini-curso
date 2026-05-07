@@ -2,7 +2,7 @@
 import icons from '../icons.js';
 import { navigate, getLeadData, setProgress, renderStepIndicator } from '../router.js';
 
-const TIMER_DURATION = 15 * 60; // 15 minutes in seconds
+const TIMER_DURATION = 1 * 60; // 1 minute in seconds
 
 export function render(app) {
   const lead = getLeadData();
