@@ -16,7 +16,7 @@ function generateTimeSlots() {
     const d = new Date(today);
     d.setDate(today.getDate() + offset);
     offset++;
-    if (d.getDay() === 0 || d.getDay() === 6) continue; // skip weekends
+    if (d.getDay() === 0 || d.getDay() === 6) continue;
     days.push({
       date: d,
       dayName: weekdays[d.getDay()],
@@ -59,14 +59,13 @@ export function render(app) {
 
         <div class="schedule-header reveal">
           <span class="section-badge">Última Etapa</span>
-          <h1>${firstName}, estamos quase lá! <span class="gradient-text">Escolha seu horário</span></h1>
-          <p>Selecione o melhor dia e horário para sua apresentação executiva personalizada. Uma de nossas consultoras entrará em contato pelo WhatsApp.</p>
+          <h1>${firstName}, estamos quase lá. <span class="gradient-text">Escolha seu horário</span></h1>
+          <p>Selecione o melhor dia e horário para sua apresentação personalizada. Um especialista em gestão esportiva entrará em contato pelo WhatsApp.</p>
         </div>
 
         <div class="schedule-content">
-          <!-- DAY SELECTOR -->
           <div class="schedule-days reveal">
-            <h3>📅 Selecione o dia</h3>
+            <h3>${icons.calendar} Selecione o dia</h3>
             <div class="days-grid" id="daysGrid">
               ${days.map((d, i) => `
                 <button class="day-btn ${i === 0 ? 'selected' : ''}" data-date="${d.iso}" data-label="${d.dayName}, ${d.dayNum} ${d.month}">
@@ -78,9 +77,8 @@ export function render(app) {
             </div>
           </div>
 
-          <!-- TIME SELECTOR -->
           <div class="schedule-times reveal">
-            <h3>🕐 Selecione o horário</h3>
+            <h3>${icons.clock} Selecione o horário</h3>
             <div class="times-grid" id="timesGrid">
               ${TIME_SLOTS.map(t => `
                 <button class="time-btn" data-time="${t.label}">
@@ -91,10 +89,9 @@ export function render(app) {
             </div>
           </div>
 
-          <!-- SUMMARY & CTA -->
           <div class="schedule-summary reveal" id="scheduleSummary" style="display:none">
             <div class="summary-card">
-              <h3>📋 Resumo do Agendamento</h3>
+              <h3>${icons.clipboard} Resumo do Agendamento</h3>
               <div class="summary-details">
                 <div class="summary-row">
                   <span class="summary-label">Nome:</span>
@@ -156,14 +153,12 @@ export function init() {
   const summaryTime = document.getElementById('summaryTime');
   const btnWhatsapp = document.getElementById('btnWhatsapp');
 
-  // Select first day by default
   const firstDay = daysGrid.querySelector('.day-btn');
   if (firstDay) {
     selectedDate = firstDay.dataset.date;
     selectedDateLabel = firstDay.dataset.label;
   }
 
-  // Day selection
   daysGrid.addEventListener('click', (e) => {
     const btn = e.target.closest('.day-btn');
     if (!btn) return;
@@ -174,7 +169,6 @@ export function init() {
     updateSummary();
   });
 
-  // Time selection
   timesGrid.addEventListener('click', (e) => {
     const btn = e.target.closest('.time-btn');
     if (!btn) return;
@@ -190,18 +184,15 @@ export function init() {
       summaryDate.textContent = selectedDateLabel;
       summaryTime.textContent = selectedTime;
       btnWhatsapp.disabled = false;
-
-      // Smooth scroll to summary
       setTimeout(() => {
         summary.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 200);
     }
   }
 
-  // WhatsApp CTA
   btnWhatsapp.addEventListener('click', () => {
     if (!selectedDate || !selectedTime) {
-      showToast('⚠️ Selecione um dia e horário primeiro.');
+      showToast('Selecione um dia e horário primeiro.');
       return;
     }
 
@@ -211,15 +202,15 @@ export function init() {
       `Olá! Sou ${lead?.nome || 'presidente de liga'}, ` +
       `da ${lead?.liga || 'minha liga'} (${lead?.estado || ''}).\n\n` +
       `Acabei de assistir o mini-curso da JLiga e gostaria de agendar ` +
-      `minha apresentação executiva.\n\n` +
-      `📅 Data: ${selectedDateLabel}\n` +
-      `🕐 Horário: ${selectedTime}\n\n` +
-      `Aguardo a confirmação! 🙏`
+      `minha apresentação personalizada.\n\n` +
+      `Data: ${selectedDateLabel}\n` +
+      `Horário: ${selectedTime}\n\n` +
+      `Aguardo a confirmação.`
     );
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
     
-    showToast('✅ Redirecionando para o WhatsApp...');
+    showToast('Redirecionando para o WhatsApp...');
     
     setTimeout(() => {
       window.open(url, '_blank');

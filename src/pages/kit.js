@@ -24,8 +24,8 @@ export function render(app) {
         
         <div class="kit-header reveal">
           <span class="section-badge">Etapa 3 de 5</span>
-          <h1>${firstName}, aqui está seu <span class="gradient-text">Kit Completo</span> 🎁</h1>
-          <p>3 materiais exclusivos para você aplicar imediatamente na sua liga. Baixe todos gratuitamente.</p>
+          <h1>${firstName}, aqui está seu <span class="gradient-text">Kit Completo</span></h1>
+          <p>3 materiais exclusivos para você aplicar imediatamente na sua operação. Baixe todos gratuitamente.</p>
         </div>
 
         <div class="kit-grid">
@@ -34,14 +34,14 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-1">
               ${icons.file}
             </div>
-            <div class="kit-card-tag">PDF • 12 páginas</div>
-            <h3>Modelo de Projeto de Captação de Patrocínio</h3>
-            <p>Template pronto para preencher e enviar para empresas. Inclui seções de contrapartida, métricas e valores sugeridos.</p>
+            <div class="kit-card-tag">PDF — 12 páginas</div>
+            <h3>Modelo de Proposta Comercial de Patrocínio</h3>
+            <p>Template pronto com seções de contrapartida, métricas e valores sugeridos. Proposta sustentada por evidência, não por promessa.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
-              <span>Dica: O JLiga gera este documento automaticamente com os dados da sua liga</span>
+              <span>O JLiga gera este documento automaticamente com dados reais da sua competição</span>
             </div>
-            <button class="btn-kit-download" data-material="modelo-captacao-patrocinio">
+            <button class="btn-kit-download" data-material="modelo-proposta-patrocinio">
               ${icons.download} Baixar Material
             </button>
           </div>
@@ -51,12 +51,12 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-2">
               ${icons.chart}
             </div>
-            <div class="kit-card-tag">PDF • 18 páginas</div>
+            <div class="kit-card-tag">PDF — 18 páginas</div>
             <h3>Guia: Como Acessar Verba Pública para sua Liga</h3>
-            <p>Passo a passo completo com os principais editais, leis de incentivo ao esporte e modelos de submissão prontos.</p>
+            <p>Passo a passo completo com os principais editais, leis de incentivo ao esporte e modelos de submissão com conformidade documentada.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
-              <span>Dica: O JLiga automatiza o processo de prestação de contas exigido pelos editais</span>
+              <span>O JLiga gera relatórios auditáveis prontos para prestação de contas em editais</span>
             </div>
             <button class="btn-kit-download" data-material="guia-verba-publica">
               ${icons.download} Baixar Material
@@ -68,14 +68,14 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-3">
               ${icons.clipboard}
             </div>
-            <div class="kit-card-tag">PDF • 8 páginas</div>
-            <h3>Checklist de Gestão de Liga Profissional</h3>
-            <p>10 itens essenciais que toda liga precisa ter. Avalie o nível de profissionalismo da sua organização.</p>
+            <div class="kit-card-tag">PDF — 8 páginas</div>
+            <h3>Checklist de Governança para Liga Profissional</h3>
+            <p>10 itens essenciais de rastreabilidade, conformidade e gestão. Avalie o nível de profissionalismo da sua organização.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
-              <span>Dica: O JLiga resolve 8 dos 10 itens deste checklist automaticamente</span>
+              <span>O JLiga resolve 8 dos 10 itens deste checklist automaticamente</span>
             </div>
-            <button class="btn-kit-download" data-material="checklist-gestao">
+            <button class="btn-kit-download" data-material="checklist-governanca">
               ${icons.download} Baixar Material
             </button>
           </div>
@@ -84,8 +84,8 @@ export function render(app) {
         <div class="kit-bottom-cta reveal">
           <div class="kit-bottom-card">
             <div class="kit-bottom-icon">${icons.zap}</div>
-            <h2>E se existisse uma plataforma que <span class="gradient-text">automatiza tudo isso</span>?</h2>
-            <p>Gestão de atletas, financeiro, ranking, eventos, patrocínios e prestação de contas — tudo em um só lugar.</p>
+            <h2>E se existisse uma plataforma que <span class="gradient-text">estrutura tudo isso</span>?</h2>
+            <p>Gestão de atletas, financeiro, ranking, eventos, conformidade LGPD e relatórios para patrocinadores — tudo em um único ambiente.</p>
             <button class="btn-primary" id="btnSolucao">
               Descobrir a solução ${icons.arrow}
             </button>
@@ -103,26 +103,23 @@ export function render(app) {
 }
 
 export function init() {
-  // Reveal animations
   document.querySelectorAll('.reveal').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), i * 150);
   });
 
-  // Download buttons
   document.querySelectorAll('.btn-kit-download').forEach(btn => {
     btn.addEventListener('click', () => {
       const material = btn.dataset.material;
       btn.innerHTML = `<span class="spinner"></span> Preparando...`;
       btn.disabled = true;
       setTimeout(() => {
-        btn.innerHTML = `✅ Download concluído`;
+        btn.innerHTML = `${icons.checkCircle} Download concluído`;
         btn.classList.add('downloaded');
-        showToast(`📄 "${material}.pdf" baixado com sucesso!`);
+        showToast(`${icons.file} "${material}.pdf" baixado com sucesso`);
       }, 1500);
     });
   });
 
-  // CTA to solution
   document.getElementById('btnSolucao').addEventListener('click', () => {
     navigate('/solucao');
   });

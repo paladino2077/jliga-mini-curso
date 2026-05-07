@@ -23,22 +23,22 @@ export function render(app) {
     <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero-bg">
-        <img src="/hero-bg.png" alt="Liga esportiva profissional" loading="eager" />
+        <img src="/hero-bg.png" alt="Gestão esportiva profissional" loading="eager" />
       </div>
       <div class="hero-glow"></div>
       <div class="container">
         <span class="section-badge">Mini-Curso Gratuito</span>
         <h1>
-          <span class="line">Aprenda a captar</span>
-          <span class="line"><span class="gradient-text">patrocínio e verba pública</span></span>
-          <span class="line">para sua liga</span>
+          <span class="line">Sem controle, sem dados</span>
+          <span class="line"><span class="gradient-text">sua liga trava o próprio</span></span>
+          <span class="line">crescimento</span>
         </h1>
         <p class="subtitle">
-          Aula gratuita de 25 minutos + kit de materiais prontos para você
-          profissionalizar a gestão e o financiamento da sua liga esportiva.
+          Assista a aula gratuita e entenda o que separa competições comuns
+          de operações que crescem, atraem patrocinadores e se tornam referência.
         </p>
         <a href="#inscricao-section" class="btn-primary" id="heroCta">
-          Quero assistir a aula grátis ${icons.arrow}
+          Assistir aula gratuita ${icons.arrow}
         </a>
         <div class="hero-stats">
           <div class="hero-stat">
@@ -67,37 +67,37 @@ export function render(app) {
         <div style="text-align:center">
           <span class="section-badge">O que você vai aprender</span>
         </div>
-        <h2>Tudo que um presidente de liga precisa saber sobre <span class="gradient-text">captação de recursos</span></h2>
+        <h2>Construída para quem opera ou deseja operar com <span class="gradient-text">padrão profissional</span></h2>
         <div class="benefits-grid">
           <div class="benefit-card reveal">
-            <div class="benefit-icon">${icons.dollarSign}</div>
-            <h3>Captação de Patrocínio</h3>
-            <p>Como montar propostas comerciais irresistíveis e fechar contratos com empresas locais e nacionais.</p>
-          </div>
-          <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.shield}</div>
-            <h3>Verba Pública</h3>
-            <p>O passo a passo para acessar editais, leis de incentivo e programas governamentais de fomento ao esporte.</p>
+            <h3>Validação Oficial de Atletas</h3>
+            <p>Cada atleta confirmado em tempo real diretamente na Receita Federal. Rastreabilidade total, do cadastro ao campo.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.settings}</div>
-            <h3>Gestão Profissional</h3>
-            <p>Ferramentas e processos para transformar sua liga amadora em uma operação profissional e escalável.</p>
+            <h3>Gestão Completa em Um Único Ambiente</h3>
+            <p>Inscrições, tabelas, classificações, súmula digital e arbitragem — tudo integrado, tudo rastreável.</p>
+          </div>
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">${icons.dollarSign}</div>
+            <h3>Dados que Viram Patrocínio</h3>
+            <p>Relatórios estruturados, base de filiados e métricas de competição prontos para apresentar a qualquer parceiro.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.ranking}</div>
-            <h3>Ranking e Credibilidade</h3>
-            <p>Como um sistema de ranking eleva a credibilidade da liga e atrai mais atletas e patrocinadores.</p>
+            <h3>Conformidade LGPD</h3>
+            <p>Dados tratados dentro dos critérios da Lei Geral de Proteção de Dados. Sua entidade opera com respaldo jurídico real.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.globe}</div>
-            <h3>Visibilidade Digital</h3>
-            <p>Estratégias de transmissão ao vivo e redes sociais para multiplicar o alcance dos seus eventos.</p>
+            <h3>App Personalizado Android e iOS</h3>
+            <p>Com a identidade visual da sua organização. Atletas, clubes e parceiros acessam tudo pelo celular.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.barChart}</div>
-            <h3>Relatórios para Prestação de Contas</h3>
-            <p>Gere relatórios profissionais automaticamente para patrocinadores e órgãos públicos.</p>
+            <h3>Crescimento Estruturado</h3>
+            <p>Pare de administrar ferramentas e passe a administrar a competição. Segurança jurídica e rastreabilidade de dados.</p>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ export function render(app) {
         <div style="text-align:center">
           <span class="section-badge">Como funciona</span>
         </div>
-        <h2>Seu caminho para <span class="gradient-text">profissionalizar sua liga</span></h2>
+        <h2>Seu caminho para <span class="gradient-text">profissionalizar sua operação</span></h2>
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
@@ -121,19 +121,19 @@ export function render(app) {
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 2</div>
             <h3>Assista a aula exclusiva</h3>
-            <p>25 minutos de conteúdo real sobre captação de patrocínio e verba pública para ligas.</p>
+            <p>Entenda o que separa competições comuns de operações que crescem e atraem patrocinadores.</p>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 3</div>
             <h3>Baixe o Kit Completo</h3>
-            <p>3 materiais prontos: modelo de projeto, guia de verba pública e checklist de gestão.</p>
+            <p>3 materiais prontos: modelo de projeto, guia de verba pública e checklist de gestão profissional.</p>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 4</div>
             <h3>Conheça a solução</h3>
-            <p>Descubra como automatizar tudo isso com a plataforma JLiga.</p>
+            <p>Veja como o JLiga estrutura sua operação com governança real e dados auditáveis.</p>
           </div>
         </div>
       </div>
@@ -148,8 +148,8 @@ export function render(app) {
         <h2>O que dizem os <span class="gradient-text">presidentes de liga</span></h2>
         <div class="testimonials-grid">
           <div class="testimonial-card reveal">
-            <div class="testimonial-stars">★★★★★</div>
-            <blockquote>"Depois da aula, consegui captar R$ 45 mil em patrocínio para nossa liga regional. O material é muito prático e direto ao ponto."</blockquote>
+            <div class="testimonial-stars">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
+            <blockquote>"Depois da aula, consegui estruturar a proposta de patrocínio com dados reais. Fechamos R$ 45 mil em 3 meses. Mudou o patamar da nossa liga."</blockquote>
             <div class="testimonial-author">
               <div class="testimonial-avatar">MR</div>
               <div>
@@ -159,8 +159,8 @@ export function render(app) {
             </div>
           </div>
           <div class="testimonial-card reveal">
-            <div class="testimonial-stars">★★★★★</div>
-            <blockquote>"O guia de verba pública me abriu os olhos. Não sabia que existiam tantos editais disponíveis. Já submeti 3 projetos."</blockquote>
+            <div class="testimonial-stars">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
+            <blockquote>"O material sobre verba pública me abriu os olhos. Não sabia que existiam tantos editais disponíveis. Já submeti 3 projetos com respaldo."</blockquote>
             <div class="testimonial-author">
               <div class="testimonial-avatar">PS</div>
               <div>
@@ -170,8 +170,8 @@ export function render(app) {
             </div>
           </div>
           <div class="testimonial-card reveal">
-            <div class="testimonial-stars">★★★★★</div>
-            <blockquote>"Nossa liga tinha 200 atletas e zero patrocínio. Hoje temos 3 patrocinadores fixos e gestão 100% digital. Transformou nosso esporte."</blockquote>
+            <div class="testimonial-stars">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
+            <blockquote>"Nossa liga operava com planilhas e WhatsApp. Hoje temos rastreabilidade total, 3 patrocinadores fixos e gestão 100% digital."</blockquote>
             <div class="testimonial-author">
               <div class="testimonial-avatar">CF</div>
               <div>
@@ -233,7 +233,7 @@ export function render(app) {
               Acessar aula gratuita ${icons.arrow}
             </button>
             <p class="form-disclaimer">
-              🔒 Seus dados estão seguros. Não enviamos spam.
+              ${icons.lock} Seus dados estão seguros. Plataforma adequada à LGPD.
             </p>
           </form>
         </div>
@@ -242,26 +242,24 @@ export function render(app) {
 
     <!-- URGENCY BAR -->
     <div class="urgency-bar">
-      🔥 Mais de <span id="vagasCount">2.347</span> presidentes já assistiram — Acesse agora gratuitamente!
+      Mais de <span id="vagasCount">2.347</span> presidentes já assistiram — Acesse agora gratuitamente
     </div>
 
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados.</p>
+        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados. Plataforma adequada à LGPD.</p>
       </div>
     </footer>
   `;
 }
 
 export function init() {
-  // Navbar scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Mobile menu
   const mobileBtn = document.getElementById('navMobileBtn');
   const navLinks = document.getElementById('navLinks');
   mobileBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -269,7 +267,6 @@ export function init() {
     a.addEventListener('click', () => navLinks.classList.remove('open'));
   });
 
-  // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -281,7 +278,6 @@ export function init() {
   }, { threshold: 0.15 });
   revealEls.forEach(el => observer.observe(el));
 
-  // Counter animation
   const counters = document.querySelectorAll('[data-target]');
   const counterObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -303,7 +299,6 @@ export function init() {
   }, { threshold: 0.5 });
   counters.forEach(c => counterObs.observe(c));
 
-  // Phone mask
   const phoneInput = document.getElementById('telefone');
   phoneInput.addEventListener('input', (e) => {
     let v = e.target.value.replace(/\D/g, '');
@@ -313,7 +308,6 @@ export function init() {
     e.target.value = v;
   });
 
-  // Form submit
   const form = document.getElementById('captureForm');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
