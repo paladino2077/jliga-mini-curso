@@ -31,5 +31,25 @@ spinStyle.textContent = `
 `;
 document.head.appendChild(spinStyle);
 
+// Theme Toggle Logic
+import icons from './icons.js';
+const themeToggle = document.getElementById('themeToggle');
+let currentTheme = localStorage.getItem('theme') || 'dark';
+
+function updateTheme() {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  themeToggle.innerHTML = currentTheme === 'light' ? icons.moon : icons.sun;
+  localStorage.setItem('theme', currentTheme);
+}
+
+// Initialize theme
+updateTheme();
+themeToggle.style.display = 'flex';
+
+themeToggle.addEventListener('click', () => {
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  updateTheme();
+});
+
 // Initialize router
 initRouter();

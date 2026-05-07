@@ -323,6 +323,29 @@ export function init() {
       registeredAt: new Date().toISOString(),
     };
 
+    // RD Station CRM Integration
+    const users = ['6989fcbfefae53001e87c939', '698a007290293f001684cb0b']; // Kátia and Joicy
+    const randomUser = users[Math.floor(Math.random() * users.length)];
+    
+    const rdPayload = {
+      deal: {
+        name: `Lead: ${data.nome} - ${data.liga}`,
+        user_id: randomUser,
+        contacts: [{
+          name: data.nome,
+          emails: [{ email: data.email }],
+          phones: [{ phone: data.telefone }]
+        }]
+      }
+    };
+
+    // Fire and forget so we don't block the user navigation
+    fetch('https://crm.rdstation.com/api/v1/deals?token=6863e5587bc2d9001d3e53cf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(rdPayload)
+    }).catch(err => console.error('RD Station Error:', err));
+
     setTimeout(() => {
       setLeadData(data);
       navigate('/aula');
