@@ -40,13 +40,13 @@ const TIME_SLOTS = [
 
 export function render(app) {
   const lead = getLeadData();
-  const firstName = lead?.nome?.split(' ')[0] || 'Presidente';
+  const firstName = lead?.nome?.split(' ')[0] || 'Gestor';
   const days = generateTimeSlots();
 
   app.innerHTML = `
     <nav class="navbar scrolled">
       <div class="container">
-        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="jliga.club"></a>
         <div class="nav-links">
           <a href="#/solucao" style="color:#666">← Voltar</a>
         </div>
@@ -98,12 +98,12 @@ export function render(app) {
                   <span class="summary-value">${lead?.nome || '—'}</span>
                 </div>
                 <div class="summary-row">
-                  <span class="summary-label">Liga:</span>
-                  <span class="summary-value">${lead?.liga || '—'}</span>
+                  <span class="summary-label">Organização:</span>
+                  <span class="summary-value">${lead?.organizacao || '—'}</span>
                 </div>
                 <div class="summary-row">
-                  <span class="summary-label">Estado:</span>
-                  <span class="summary-value">${lead?.estado || '—'}</span>
+                  <span class="summary-label">Cargo:</span>
+                  <span class="summary-value">${lead?.cargo || '—'}</span>
                 </div>
                 <div class="summary-row">
                   <span class="summary-label">Data:</span>
@@ -130,7 +130,7 @@ export function render(app) {
 
     <footer class="footer">
       <div class="container">
-        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados.</p>
+        <p>© 2026 <a href="#/">jliga.club</a> — Todos os direitos reservados.</p>
       </div>
     </footer>
   `;
@@ -199,10 +199,11 @@ export function init() {
     setProgress('scheduled');
 
     const message = encodeURIComponent(
-      `Olá! Sou ${lead?.nome || 'presidente de liga'}, ` +
-      `da ${lead?.liga || 'minha liga'} (${lead?.estado || ''}).\n\n` +
-      `Acabei de assistir o mini-curso da JLiga e gostaria de agendar ` +
-      `minha apresentação personalizada.\n\n` +
+      `Olá! Sou ${lead?.nome || 'gestor esportivo'}` +
+      `${lead?.cargo ? ` (${lead.cargo})` : ''}, ` +
+      `da ${lead?.organizacao || 'minha organização'}.\n\n` +
+      `Quero falar com um especialista da jliga.club e agendar ` +
+      `uma apresentação personalizada.\n\n` +
       `Data: ${selectedDateLabel}\n` +
       `Horário: ${selectedTime}\n\n` +
       `Aguardo a confirmação.`

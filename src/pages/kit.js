@@ -4,14 +4,14 @@ import { navigate, getLeadData, setProgress, renderStepIndicator, showToast } fr
 
 export function render(app) {
   const lead = getLeadData();
-  const firstName = lead?.nome?.split(' ')[0] || 'Presidente';
+  const firstName = lead?.nome?.split(' ')[0] || 'Gestor';
 
   setProgress('kitVisited');
 
   app.innerHTML = `
     <nav class="navbar scrolled">
       <div class="container">
-        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="jliga.club"></a>
         <div class="nav-links">
           <a href="#/aula" style="color:#666">← Voltar à aula</a>
         </div>
@@ -39,7 +39,7 @@ export function render(app) {
             <p>Template pronto com seções de contrapartida, métricas e valores sugeridos. Proposta sustentada por evidência, não por promessa.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
-              <span>O JLiga gera este documento automaticamente com dados reais da sua competição</span>
+              <span>A jliga.club gera este documento automaticamente com dados reais da sua competição</span>
             </div>
             <button class="btn-kit-download" data-material="modelo-proposta-patrocinio">
               ${icons.download} Baixar Material
@@ -52,11 +52,11 @@ export function render(app) {
               ${icons.chart}
             </div>
             <div class="kit-card-tag">PDF — 18 páginas</div>
-            <h3>Guia: Como Acessar Verba Pública para sua Liga</h3>
+            <h3>Guia: Como Acessar Verba Pública para sua Operação</h3>
             <p>Passo a passo completo com os principais editais, leis de incentivo ao esporte e modelos de submissão com conformidade documentada.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
-              <span>O JLiga gera relatórios auditáveis prontos para prestação de contas em editais</span>
+              <span>A jliga.club gera relatórios auditáveis prontos para prestação de contas em editais</span>
             </div>
             <button class="btn-kit-download" data-material="guia-verba-publica">
               ${icons.download} Baixar Material
@@ -69,11 +69,11 @@ export function render(app) {
               ${icons.clipboard}
             </div>
             <div class="kit-card-tag">PDF — 8 páginas</div>
-            <h3>Checklist de Governança para Liga Profissional</h3>
+            <h3>Checklist de Governança para Operação Profissional</h3>
             <p>10 itens essenciais de rastreabilidade, conformidade e gestão. Avalie o nível de profissionalismo da sua organização.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
-              <span>O JLiga resolve 8 dos 10 itens deste checklist automaticamente</span>
+              <span>A jliga.club resolve 8 dos 10 itens deste checklist automaticamente</span>
             </div>
             <button class="btn-kit-download" data-material="checklist-governanca">
               ${icons.download} Baixar Material
@@ -96,7 +96,7 @@ export function render(app) {
 
     <footer class="footer">
       <div class="container">
-        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados.</p>
+        <p>© 2026 <a href="#/">jliga.club</a> — Todos os direitos reservados.</p>
       </div>
     </footer>
   `;
