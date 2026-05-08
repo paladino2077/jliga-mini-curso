@@ -1,4 +1,4 @@
-// ===== JLIGA FUNNEL — ENTRY POINT =====
+// ===== jliga.club FUNNEL — ENTRY POINT =====
 import './style.css';
 import { initRouter, registerPages } from './router.js';
 

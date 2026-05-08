@@ -2,17 +2,27 @@
 import icons from '../icons.js';
 import { navigate, setLeadData, renderStepIndicator } from '../router.js';
 
+function generateCaptcha() {
+  const a = Math.floor(Math.random() * 9) + 1;
+  const b = Math.floor(Math.random() * 9) + 1;
+  return { a, b, answer: a + b };
+}
+
+let captcha = generateCaptcha();
+
 export function render(app) {
+  captcha = generateCaptcha();
+
   app.innerHTML = `
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
       <div class="container">
-        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="jliga.club"></a>
         <div class="nav-links" id="navLinks">
           <a href="#beneficios-section">Benefícios</a>
           <a href="#como-funciona-section">Como Funciona</a>
           <a href="#depoimentos-section">Depoimentos</a>
-          <a href="#inscricao-section" class="nav-cta">Inscreva-se</a>
+          <a href="#inscricao-section" class="nav-cta">Falar com especialista</a>
         </div>
         <button class="nav-mobile-btn" id="navMobileBtn" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -27,27 +37,27 @@ export function render(app) {
       </div>
       <div class="hero-glow"></div>
       <div class="container">
-        <span class="section-badge">Mini-Curso Gratuito</span>
+        <span class="section-badge">Plataforma de gestão esportiva</span>
         <h1>
-          <span class="line">Sem controle, sem dados</span>
-          <span class="line"><span class="gradient-text">sua liga trava o próprio</span></span>
-          <span class="line">crescimento</span>
+          <span class="line">Uma plataforma.</span>
+          <span class="line"><span class="gradient-text">Controle total</span></span>
+          <span class="line">da sua competição.</span>
         </h1>
         <p class="subtitle">
-          Assista a aula gratuita e entenda o que separa competições comuns
-          de operações que crescem, atraem patrocinadores e se tornam referência.
+          Inscrições, tabelas, súmula digital, arbitragem e relatórios em um único ambiente.
+          Para ligas, federações e clubes que operam — ou desejam operar — com padrão profissional, em qualquer modalidade.
         </p>
         <a href="#inscricao-section" class="btn-primary" id="heroCta">
-          Assistir aula gratuita ${icons.arrow}
+          Falar com um especialista ${icons.arrow}
         </a>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="number" data-target="2300">0</div>
-            <div class="label">Presidentes cadastrados</div>
+            <div class="label">Gestores cadastrados</div>
           </div>
           <div class="hero-stat">
             <div class="number" data-target="850">0</div>
-            <div class="label">Ligas atendidas</div>
+            <div class="label">Organizações atendidas</div>
           </div>
           <div class="hero-stat">
             <div class="number" data-target="27">0</div>
@@ -65,7 +75,7 @@ export function render(app) {
     <section class="benefits" id="beneficios-section">
       <div class="container">
         <div style="text-align:center">
-          <span class="section-badge">O que você vai aprender</span>
+          <span class="section-badge">O que a plataforma entrega</span>
         </div>
         <h2>Construída para quem opera ou deseja operar com <span class="gradient-text">padrão profissional</span></h2>
         <div class="benefits-grid">
@@ -76,28 +86,28 @@ export function render(app) {
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.settings}</div>
-            <h3>Gestão Completa em Um Único Ambiente</h3>
+            <h3>Gestão completa em um único ambiente</h3>
             <p>Inscrições, tabelas, classificações, súmula digital e arbitragem — tudo integrado, tudo rastreável.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.dollarSign}</div>
-            <h3>Dados que Viram Patrocínio</h3>
+            <h3>Dados que viram patrocínio</h3>
             <p>Relatórios estruturados, base de filiados e métricas de competição prontos para apresentar a qualquer parceiro.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.ranking}</div>
             <h3>Conformidade LGPD</h3>
-            <p>Dados tratados dentro dos critérios da Lei Geral de Proteção de Dados. Sua entidade opera com respaldo jurídico real.</p>
+            <p>Dados tratados dentro dos critérios da Lei Geral de Proteção de Dados. Sua organização opera com respaldo jurídico real.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.globe}</div>
-            <h3>App Personalizado Android e iOS</h3>
+            <h3>App personalizado Android e iOS</h3>
             <p>Com a identidade visual da sua organização. Atletas, clubes e parceiros acessam tudo pelo celular.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">${icons.barChart}</div>
-            <h3>Crescimento Estruturado</h3>
-            <p>Pare de administrar ferramentas e passe a administrar a competição. Segurança jurídica e rastreabilidade de dados.</p>
+            <h3>Múltiplas modalidades</h3>
+            <p>Futebol, futsal, futebol 7, basquete, vôlei, beach tennis, futevôlei, handebol e mais — cada modalidade com sua lógica de tabela e pontuação.</p>
           </div>
         </div>
       </div>
@@ -109,31 +119,31 @@ export function render(app) {
         <div style="text-align:center">
           <span class="section-badge">Como funciona</span>
         </div>
-        <h2>Seu caminho para <span class="gradient-text">profissionalizar sua operação</span></h2>
+        <h2>Seu caminho para <span class="gradient-text">profissionalizar a operação</span></h2>
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 1</div>
-            <h3>Cadastre-se gratuitamente</h3>
-            <p>Preencha o formulário abaixo com seus dados. Leva menos de 1 minuto.</p>
+            <h3>Preencha o formulário</h3>
+            <p>Conte um pouco sobre sua organização, volume de competição e principais desafios. Leva menos de 2 minutos.</p>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 2</div>
-            <h3>Assista a aula exclusiva</h3>
-            <p>Entenda o que separa competições comuns de operações que crescem e atraem patrocinadores.</p>
+            <h3>Fale com um especialista</h3>
+            <p>Um especialista em gestão esportiva analisa o seu caso e entende o momento da sua operação — sem script de venda.</p>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 3</div>
-            <h3>Baixe o Kit Completo</h3>
-            <p>3 materiais prontos: modelo de projeto, guia de verba pública e checklist de gestão profissional.</p>
+            <h3>Receba uma demonstração</h3>
+            <p>Veja a plataforma em uso com dados próximos à sua realidade. Você decide se faz sentido seguir.</p>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-step">Passo 4</div>
-            <h3>Conheça a solução</h3>
-            <p>Veja como o JLiga estrutura sua operação com governança real e dados auditáveis.</p>
+            <h3>Estruture sua competição</h3>
+            <p>Operação profissionalizada com governança real, dados auditáveis e respaldo jurídico — em qualquer modalidade.</p>
           </div>
         </div>
       </div>
@@ -143,40 +153,40 @@ export function render(app) {
     <section class="social-proof" id="depoimentos-section">
       <div class="container">
         <div style="text-align:center">
-          <span class="section-badge">Quem já participou</span>
+          <span class="section-badge">Quem já opera com a jliga.club</span>
         </div>
-        <h2>O que dizem os <span class="gradient-text">presidentes de liga</span></h2>
+        <h2>O que dizem <span class="gradient-text">gestores esportivos</span></h2>
         <div class="testimonials-grid">
           <div class="testimonial-card reveal">
             <div class="testimonial-stars">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
-            <blockquote>"Depois da aula, consegui estruturar a proposta de patrocínio com dados reais. Fechamos R$ 45 mil em 3 meses. Mudou o patamar da nossa liga."</blockquote>
+            <blockquote>"Depois que estruturamos os dados, conseguimos montar a proposta de patrocínio com argumento real. Fechamos R$ 45 mil em 3 meses. Mudou o patamar da nossa federação."</blockquote>
             <div class="testimonial-author">
               <div class="testimonial-avatar">MR</div>
               <div>
                 <div class="testimonial-name">Marcos Ribeiro</div>
-                <div class="testimonial-role">Presidente · Liga de Jiu-Jitsu do Paraná</div>
+                <div class="testimonial-role">Presidente · Federação Paranaense de Futsal</div>
               </div>
             </div>
           </div>
           <div class="testimonial-card reveal">
             <div class="testimonial-stars">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
-            <blockquote>"O material sobre verba pública me abriu os olhos. Não sabia que existiam tantos editais disponíveis. Já submeti 3 projetos com respaldo."</blockquote>
+            <blockquote>"O acesso a editais de incentivo deixou de ser um problema. Hoje submetemos projetos com relatórios auditáveis e prestação de contas estruturada."</blockquote>
             <div class="testimonial-author">
               <div class="testimonial-avatar">PS</div>
               <div>
                 <div class="testimonial-name">Patricia Santos</div>
-                <div class="testimonial-role">Presidente · Liga de Judô de Goiás</div>
+                <div class="testimonial-role">Diretora · Liga Goiana de Vôlei</div>
               </div>
             </div>
           </div>
           <div class="testimonial-card reveal">
             <div class="testimonial-stars">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
-            <blockquote>"Nossa liga operava com planilhas e WhatsApp. Hoje temos rastreabilidade total, 3 patrocinadores fixos e gestão 100% digital."</blockquote>
+            <blockquote>"Operávamos com planilhas e WhatsApp. Hoje temos rastreabilidade total, 3 patrocinadores fixos e gestão 100% digital — em todas as modalidades do clube."</blockquote>
             <div class="testimonial-author">
               <div class="testimonial-avatar">CF</div>
               <div>
                 <div class="testimonial-name">Carlos Ferreira</div>
-                <div class="testimonial-role">Presidente · Liga MMA do Ceará</div>
+                <div class="testimonial-role">Gestor · Clube Esportivo do Ceará</div>
               </div>
             </div>
           </div>
@@ -189,48 +199,84 @@ export function render(app) {
       <div class="capture-glow"></div>
       <div class="container">
         <div class="capture-inner">
-          <span class="section-badge">Acesso Gratuito</span>
-          <h2>Comece agora o <span class="gradient-text">Mini-Curso Gratuito</span></h2>
-          <p class="capture-sub">Preencha seus dados e acesse imediatamente a aula + kit de materiais.</p>
-          
-          <form class="capture-form" id="captureForm">
+          <span class="section-badge">Atendimento personalizado</span>
+          <h2>Preencha e fale com um <span class="gradient-text">especialista</span></h2>
+          <p class="capture-sub">Conte um pouco sobre sua operação. Um especialista em gestão esportiva vai entender o seu momento e mostrar como a jliga.club pode estruturar suas competições.</p>
+
+          <form class="capture-form" id="captureForm" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="nome">Seu nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Nome completo" required />
+                <label for="nome">Nome <span class="req">*</span></label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
               </div>
               <div class="form-group">
-                <label for="email">E-mail</label>
+                <label for="organizacao">Organização <span class="req">*</span></label>
+                <input type="text" id="organizacao" name="organizacao" placeholder="Liga, federação, clube" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-mail <span class="req">*</span></label>
                 <input type="email" id="email" name="email" placeholder="seu@email.com" required />
               </div>
+              <div class="form-group">
+                <label for="telefone">WhatsApp <span class="req">*</span></label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(55) 11 99999-9999" required />
+              </div>
             </div>
+
             <div class="form-row">
               <div class="form-group">
-                <label for="telefone">WhatsApp</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required />
+                <label for="cargo">Cargo <span class="req">*</span></label>
+                <select id="cargo" name="cargo" required>
+                  <option value="" disabled selected>Selecione seu cargo</option>
+                  <option>Presidente</option>
+                  <option>Diretor(a)</option>
+                  <option>Gestor(a) de competições</option>
+                  <option>Coordenador(a)</option>
+                  <option>Árbitro / Mesário</option>
+                  <option>Outro</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="liga">Nome da sua Liga</label>
-                <input type="text" id="liga" name="liga" placeholder="Ex: Liga de Jiu-Jitsu do Paraná" required />
+                <label for="volume">Volume de competição <span class="req">*</span></label>
+                <select id="volume" name="volume" required>
+                  <option value="" disabled selected>Competições por ano</option>
+                  <option>Até 3 por ano</option>
+                  <option>4 a 10 por ano</option>
+                  <option>11 a 20 por ano</option>
+                  <option>Mais de 20 por ano</option>
+                </select>
               </div>
             </div>
+
             <div class="form-group">
-              <label for="estado">Estado</label>
-              <select id="estado" name="estado" required>
-                <option value="" disabled selected>Selecione seu estado</option>
-                <option>Acre</option><option>Alagoas</option><option>Amapá</option>
-                <option>Amazonas</option><option>Bahia</option><option>Ceará</option>
-                <option>Distrito Federal</option><option>Espírito Santo</option><option>Goiás</option>
-                <option>Maranhão</option><option>Mato Grosso</option><option>Mato Grosso do Sul</option>
-                <option>Minas Gerais</option><option>Pará</option><option>Paraíba</option>
-                <option>Paraná</option><option>Pernambuco</option><option>Piauí</option>
-                <option>Rio de Janeiro</option><option>Rio Grande do Norte</option><option>Rio Grande do Sul</option>
-                <option>Rondônia</option><option>Roraima</option><option>Santa Catarina</option>
-                <option>São Paulo</option><option>Sergipe</option><option>Tocantins</option>
+              <label for="base">Base de atletas <span class="req">*</span></label>
+              <select id="base" name="base" required>
+                <option value="" disabled selected>Quantidade de atletas ativos</option>
+                <option>Até 100 atletas</option>
+                <option>100 a 500 atletas</option>
+                <option>500 a 2.000 atletas</option>
+                <option>Mais de 2.000 atletas</option>
               </select>
             </div>
+
+            <div class="form-group">
+              <label for="problemas">Principais problemas hoje <span class="req">*</span></label>
+              <textarea id="problemas" name="problemas" rows="4" placeholder="Descreva os desafios ou riscos que você enfrenta na gestão da sua competição..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="captcha">Verificação de segurança <span class="req">*</span></label>
+              <div class="captcha-row">
+                <span class="captcha-question" id="captchaQuestion">${captcha.a} + ${captcha.b} =</span>
+                <input type="text" id="captcha" name="captcha" inputmode="numeric" autocomplete="off" placeholder="?" required />
+              </div>
+            </div>
+
             <button type="submit" class="btn-primary" id="submitBtn">
-              Acessar aula gratuita ${icons.arrow}
+              Enviar e falar com especialista ${icons.arrow}
             </button>
             <p class="form-disclaimer">
               ${icons.lock} Seus dados estão seguros. Plataforma adequada à LGPD.
@@ -242,13 +288,13 @@ export function render(app) {
 
     <!-- URGENCY BAR -->
     <div class="urgency-bar">
-      Mais de <span id="vagasCount">2.347</span> presidentes já assistiram — Acesse agora gratuitamente
+      Mais de <span id="vagasCount">2.347</span> gestores já estruturam suas competições com a jliga.club
     </div>
 
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados. Plataforma adequada à LGPD.</p>
+        <p>© 2026 <a href="#/">jliga.club</a> — Todos os direitos reservados. Plataforma adequada à LGPD.</p>
       </div>
     </footer>
   `;
@@ -311,25 +357,47 @@ export function init() {
   const form = document.getElementById('captureForm');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const captchaInput = document.getElementById('captcha');
+    const userAnswer = parseInt(captchaInput.value, 10);
+    if (userAnswer !== captcha.answer) {
+      captchaInput.focus();
+      captchaInput.setCustomValidity('Resposta incorreta. Tente novamente.');
+      captchaInput.reportValidity();
+      captcha = generateCaptcha();
+      document.getElementById('captchaQuestion').textContent = `${captcha.a} + ${captcha.b} =`;
+      captchaInput.value = '';
+      setTimeout(() => captchaInput.setCustomValidity(''), 100);
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const btn = document.getElementById('submitBtn');
     btn.innerHTML = '<span class="spinner"></span>';
 
     const data = {
-      nome: document.getElementById('nome').value,
-      email: document.getElementById('email').value,
-      telefone: document.getElementById('telefone').value,
-      liga: document.getElementById('liga').value,
-      estado: document.getElementById('estado').value,
+      nome: document.getElementById('nome').value.trim(),
+      organizacao: document.getElementById('organizacao').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      telefone: document.getElementById('telefone').value.trim(),
+      cargo: document.getElementById('cargo').value,
+      volume: document.getElementById('volume').value,
+      base: document.getElementById('base').value,
+      problemas: document.getElementById('problemas').value.trim(),
       registeredAt: new Date().toISOString(),
     };
 
     // RD Station CRM Integration
     const users = ['6989fcbfefae53001e87c939', '698a007290293f001684cb0b']; // Kátia and Joicy
     const randomUser = users[Math.floor(Math.random() * users.length)];
-    
+
     const rdPayload = {
       deal: {
-        name: `Lead: ${data.nome} - ${data.liga}`,
+        name: `Lead: ${data.nome} - ${data.organizacao} (${data.cargo} · ${data.volume})`,
         user_id: randomUser,
         contacts: [{
           name: data.nome,
@@ -350,5 +418,9 @@ export function init() {
       setLeadData(data);
       navigate('/aula');
     }, 1200);
+  });
+
+  document.getElementById('captcha').addEventListener('input', (e) => {
+    e.target.setCustomValidity('');
   });
 }

@@ -4,14 +4,14 @@ import { navigate, getLeadData, setProgress, renderStepIndicator } from '../rout
 
 export function render(app) {
   const lead = getLeadData();
-  const firstName = lead?.nome?.split(' ')[0] || 'Presidente';
+  const firstName = lead?.nome?.split(' ')[0] || 'Gestor';
 
   setProgress('solutionViewed');
 
   app.innerHTML = `
     <nav class="navbar scrolled">
       <div class="container">
-        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="jliga.club"></a>
         <div class="nav-links">
           <a href="#/kit" style="color:#666">← Voltar ao Kit</a>
         </div>
@@ -62,14 +62,14 @@ export function render(app) {
         </div>
 
         <div class="solution-comparison reveal">
-          <h2>Antes <span style="color:#666">vs</span> <span class="gradient-text">Com o JLiga</span></h2>
+          <h2>Antes <span style="color:#666">vs</span> <span class="gradient-text">Com a jliga.club</span></h2>
           <div class="comparison-table-wrapper">
             <table class="comparison-table">
               <thead>
                 <tr>
                   <th>Atividade</th>
                   <th class="col-before">Sem estrutura</th>
-                  <th class="col-after">Com JLiga</th>
+                  <th class="col-after">Com jliga.club</th>
                 </tr>
               </thead>
               <tbody>
@@ -111,7 +111,7 @@ export function render(app) {
         <div class="solution-numbers reveal">
           <div class="solution-number">
             <div class="solution-number-value">850+</div>
-            <div class="solution-number-label">Ligas ativas</div>
+            <div class="solution-number-label">Organizações ativas</div>
           </div>
           <div class="solution-number">
             <div class="solution-number-value">27</div>
@@ -146,7 +146,7 @@ export function render(app) {
 
     <footer class="footer">
       <div class="container">
-        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados.</p>
+        <p>© 2026 <a href="#/">jliga.club</a> — Todos os direitos reservados.</p>
       </div>
     </footer>
   `;

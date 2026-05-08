@@ -6,12 +6,12 @@ const TIMER_DURATION = 1 * 60; // 1 minute in seconds
 
 export function render(app) {
   const lead = getLeadData();
-  const firstName = lead?.nome?.split(' ')[0] || 'Presidente';
+  const firstName = lead?.nome?.split(' ')[0] || 'Gestor';
 
   app.innerHTML = `
     <nav class="navbar scrolled" id="navbar">
       <div class="container">
-        <a href="#/" class="nav-logo"><img src="/logo.png" alt="JLiga"></a>
+        <a href="#/" class="nav-logo"><img src="/logo.png" alt="jliga.club"></a>
         <div class="nav-links">
           <a href="#/" style="color:#666">← Voltar ao início</a>
         </div>
@@ -48,7 +48,7 @@ export function render(app) {
               <li>${icons.checkCircle} <span>Como transformar dados de competição em argumentos de patrocínio</span></li>
               <li>${icons.checkCircle} <span>O que é rastreabilidade de dados e por que patrocinadores exigem isso</span></li>
               <li>${icons.checkCircle} <span>Como operar com conformidade LGPD e respaldo jurídico real</span></li>
-              <li>${icons.checkCircle} <span>Case real: Liga que saiu da informalidade para operação com governança profissional</span></li>
+              <li>${icons.checkCircle} <span>Case real: organização que saiu da informalidade para operação com governança profissional</span></li>
             </ul>
           </div>
         </div>
@@ -72,7 +72,7 @@ export function render(app) {
 
     <footer class="footer">
       <div class="container">
-        <p>© 2026 <a href="#/">JLiga</a> — Todos os direitos reservados.</p>
+        <p>© 2026 <a href="#/">jliga.club</a> — Todos os direitos reservados.</p>
       </div>
     </footer>
   `;
