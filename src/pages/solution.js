@@ -28,6 +28,16 @@ export function render(app) {
           <p>Você para de administrar ferramentas e passa a administrar a competição. Tudo integrado, tudo rastreável, tudo com respaldo jurídico.</p>
         </div>
 
+        <!-- VIDEO PLACEHOLDER — substituir pelo iframe/embed quando o vídeo estiver pronto -->
+        <div class="solution-video reveal">
+          <div class="solution-video-inner">
+            <div class="solution-video-play">
+              ${icons.play}
+            </div>
+            <p class="solution-video-label">Vídeo demonstrativo da plataforma jliga.club</p>
+          </div>
+        </div>
+
         <div class="solution-features reveal">
           <div class="solution-feature">
             <div class="solution-feature-icon">${icons.shield}</div>
