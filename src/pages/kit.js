@@ -41,8 +41,11 @@ export function render(app) {
               <span>${icons.zap}</span>
               <span>A jliga.club gera este documento automaticamente com dados reais da sua competição</span>
             </div>
-            <button class="btn-kit-download" data-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/edit?usp=sharing">
-              ${icons.download} Acessar Material
+            <button class="btn-kit-download"
+              data-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/edit?usp=sharing"
+              data-download-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/export/pdf"
+              data-filename="proposta-patrocinio.pdf">
+              ${icons.download} Baixar Material
             </button>
           </div>
 
@@ -58,8 +61,11 @@ export function render(app) {
               <span>${icons.zap}</span>
               <span>A jliga.club gera relatórios auditáveis prontos para prestação de contas em editais</span>
             </div>
-            <button class="btn-kit-download" data-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/edit?usp=sharing">
-              ${icons.download} Acessar Material
+            <button class="btn-kit-download"
+              data-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/edit?usp=sharing"
+              data-download-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/export?format=xlsx"
+              data-filename="planilha-captacao.xlsx">
+              ${icons.download} Baixar Material
             </button>
           </div>
 
@@ -75,8 +81,11 @@ export function render(app) {
               <span>${icons.zap}</span>
               <span>A jliga.club resolve 8 dos 10 itens deste checklist automaticamente</span>
             </div>
-            <button class="btn-kit-download" data-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/edit?usp=sharing">
-              ${icons.download} Acessar Material
+            <button class="btn-kit-download"
+              data-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/edit?usp=sharing"
+              data-download-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/export/pdf"
+              data-filename="slides-aula.pdf">
+              ${icons.download} Baixar Material
             </button>
           </div>
         </div>
@@ -109,9 +118,16 @@ export function init() {
 
   document.querySelectorAll('.btn-kit-download').forEach(btn => {
     btn.addEventListener('click', () => {
-      const url = btn.dataset.url;
-      window.open(url, '_blank');
-      btn.innerHTML = `${icons.checkCircle} Material acessado`;
+      const downloadUrl = btn.dataset.downloadUrl;
+      const filename = btn.dataset.filename;
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = filename;
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      btn.innerHTML = `${icons.checkCircle} Download iniciado`;
       btn.classList.add('downloaded');
     });
   });
