@@ -1,6 +1,6 @@
 // ===== ETAPA 3: KIT DE MATERIAIS =====
 import icons from '../icons.js';
-import { navigate, getLeadData, setProgress, renderStepIndicator, showToast } from '../router.js';
+import { navigate, getLeadData, setProgress, renderStepIndicator } from '../router.js';
 
 export function render(app) {
   const lead = getLeadData();
@@ -34,15 +34,15 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-1">
               ${icons.file}
             </div>
-            <div class="kit-card-tag">PDF — 12 páginas</div>
-            <h3>Modelo de Proposta Comercial de Patrocínio</h3>
+            <div class="kit-card-tag">Bônus 1 — Google Slides</div>
+            <h3>Proposta de Patrocínio</h3>
             <p>Template pronto com seções de contrapartida, métricas e valores sugeridos. Proposta sustentada por evidência, não por promessa.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
               <span>A jliga.club gera este documento automaticamente com dados reais da sua competição</span>
             </div>
-            <button class="btn-kit-download" data-material="modelo-proposta-patrocinio">
-              ${icons.download} Baixar Material
+            <button class="btn-kit-download" data-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/edit?usp=sharing">
+              ${icons.download} Acessar Material
             </button>
           </div>
 
@@ -51,15 +51,15 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-2">
               ${icons.chart}
             </div>
-            <div class="kit-card-tag">PDF — 18 páginas</div>
-            <h3>Guia: Como Acessar Verba Pública para sua Operação</h3>
-            <p>Passo a passo completo com os principais editais, leis de incentivo ao esporte e modelos de submissão com conformidade documentada.</p>
+            <div class="kit-card-tag">Bônus 2 — Google Sheets</div>
+            <h3>Planilha de Captação</h3>
+            <p>Planilha completa para organizar e acompanhar suas ações de captação de patrocinadores e verba pública para sua operação.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
               <span>A jliga.club gera relatórios auditáveis prontos para prestação de contas em editais</span>
             </div>
-            <button class="btn-kit-download" data-material="guia-verba-publica">
-              ${icons.download} Baixar Material
+            <button class="btn-kit-download" data-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/edit?usp=sharing">
+              ${icons.download} Acessar Material
             </button>
           </div>
 
@@ -68,15 +68,15 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-3">
               ${icons.clipboard}
             </div>
-            <div class="kit-card-tag">PDF — 8 páginas</div>
-            <h3>Checklist de Governança para Operação Profissional</h3>
-            <p>10 itens essenciais de rastreabilidade, conformidade e gestão. Avalie o nível de profissionalismo da sua organização.</p>
+            <div class="kit-card-tag">Bônus 3 — Google Slides</div>
+            <h3>Slides da Aula</h3>
+            <p>Apresentação completa com todos os conceitos, frameworks e estratégias abordados durante o mini curso. Consulte sempre que precisar.</p>
             <div class="kit-card-cta-subtle">
               <span>${icons.zap}</span>
               <span>A jliga.club resolve 8 dos 10 itens deste checklist automaticamente</span>
             </div>
-            <button class="btn-kit-download" data-material="checklist-governanca">
-              ${icons.download} Baixar Material
+            <button class="btn-kit-download" data-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/edit?usp=sharing">
+              ${icons.download} Acessar Material
             </button>
           </div>
         </div>
@@ -109,14 +109,10 @@ export function init() {
 
   document.querySelectorAll('.btn-kit-download').forEach(btn => {
     btn.addEventListener('click', () => {
-      const material = btn.dataset.material;
-      btn.innerHTML = `<span class="spinner"></span> Preparando...`;
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = `${icons.checkCircle} Download concluído`;
-        btn.classList.add('downloaded');
-        showToast(`${icons.file} "${material}.pdf" baixado com sucesso`);
-      }, 1500);
+      const url = btn.dataset.url;
+      window.open(url, '_blank');
+      btn.innerHTML = `${icons.checkCircle} Material acessado`;
+      btn.classList.add('downloaded');
     });
   });
 
