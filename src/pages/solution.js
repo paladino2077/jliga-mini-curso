@@ -23,51 +23,44 @@ export function render(app) {
         ${renderStepIndicator(4)}
 
         <div class="solution-hero reveal">
-          <span class="section-badge">Etapa 4 de 5</span>
-          <h1>Gestão esportiva completa em um <span class="gradient-text">único ambiente</span></h1>
-          <p>Você para de administrar ferramentas e passa a administrar a competição. Tudo integrado, tudo rastreável, tudo com respaldo jurídico.</p>
+          <span class="section-badge">Para gestores que levam o esporte a sério</span>
+          <h1>Conheça a solução <span class="gradient-text">completa para você</span></h1>
+          <p>Você aprendeu como captar patrocinadores. Agora veja a ferramenta que os gestores mais sérios usam para tornar isso realidade.</p>
         </div>
 
-        <!-- VIDEO PLACEHOLDER — substituir pelo iframe/embed quando o vídeo estiver pronto -->
         <div class="solution-video reveal">
           <div class="solution-video-inner">
-            <div class="solution-video-play">
-              ${icons.play}
-            </div>
-            <p class="solution-video-label">Vídeo demonstrativo da plataforma jliga.club</p>
+            <iframe
+              src="https://www.youtube.com/embed/bRE6sIxRFyQ?rel=0"
+              title="Demonstração jliga.club"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;">
+            </iframe>
           </div>
         </div>
 
         <div class="solution-features reveal">
           <div class="solution-feature">
             <div class="solution-feature-icon">${icons.shield}</div>
-            <h3>Validação Federal de Atletas</h3>
-            <p>CPF confirmado em tempo real na Receita Federal. Fim do atleta irregular sem contestação.</p>
+            <h3>App Personalizado </h3>
+            <p>Android e iOS com nome e cores do seu campeonato.</p>
           </div>
           <div class="solution-feature">
             <div class="solution-feature-icon">${icons.dollarSign}</div>
-            <h3>Financeiro Integrado</h3>
-            <p>Inscrições, mensalidades, repasses e relatórios financeiros auditáveis automaticamente.</p>
+            <h3>Multimodalidades</h3>
+            <p>Futebol, Basquete, Handebol, Vôlei, Futevôlei e mais.</p>
           </div>
           <div class="solution-feature">
             <div class="solution-feature-icon">${icons.ranking}</div>
-            <h3>Tabelas e Classificações</h3>
-            <p>Resultados atualizados automaticamente. Súmula digital com registro auditável de cada partida.</p>
+            <h3>Ecossistema de Receita</h3>
+            <p>Inscrição, pagamento integrado e rifa digital.</p>
           </div>
           <div class="solution-feature">
             <div class="solution-feature-icon">${icons.trophy}</div>
-            <h3>Gestão de Competições</h3>
-            <p>Crie campeonatos, gerencie chaves, escala de arbitragem e TJD integrados ao mesmo sistema.</p>
-          </div>
-          <div class="solution-feature">
-            <div class="solution-feature-icon">${icons.globe}</div>
-            <h3>App Próprio Android e iOS</h3>
-            <p>Personalizado com a identidade da sua organização. Publicado na Play Store e App Store.</p>
-          </div>
-          <div class="solution-feature">
-            <div class="solution-feature-icon">${icons.barChart}</div>
-            <h3>Relatórios para Patrocínio</h3>
-            <p>Dados estruturados prontos para proposta comercial. Evidência, não promessa.</p>
+            <h3>Onboarding em 5 dias </h3>
+            <p>Site no ar em ate 5 dias. App em ate 30 dias.</p>
           </div>
         </div>
 
@@ -85,33 +78,33 @@ export function render(app) {
               <tbody>
                 <tr>
                   <td>Validação de atletas</td>
-                  <td class="col-before">${icons.x} Dados digitados manualmente</td>
-                  <td class="col-after">${icons.checkCircle} CPF validado na Receita Federal</td>
+                  <td class="col-before">${icons.x} Tabela feita na mão ou em planilha</td>
+                  <td class="col-after">${icons.checkCircle} Tabela automática em tempo real</td>
                 </tr>
                 <tr>
                   <td>Controle financeiro</td>
-                  <td class="col-before">${icons.x} Caderno / WhatsApp</td>
-                  <td class="col-after">${icons.checkCircle} Dashboard auditável</td>
+                  <td class="col-before">${icons.x} Inscrição por formulário do Google</td>
+                  <td class="col-after">${icons.checkCircle} Inscrição e pagamento online integrado</td>
                 </tr>
                 <tr>
                   <td>Tabelas e resultados</td>
-                  <td class="col-before">${icons.x} Atualização manual</td>
+                  <td class="col-before">${icons.x} Cobrança via Pix no WhatsApp</td>
                   <td class="col-after">${icons.checkCircle} Atualização automática</td>
                 </tr>
                 <tr>
                   <td>Inscrição em eventos</td>
-                  <td class="col-before">${icons.x} Formulário Google</td>
-                  <td class="col-after">${icons.checkCircle} Portal do atleta integrado</td>
+                  <td class="col-before">${icons.x} Sem app, sem site, sem identidade</td>
+                  <td class="col-after">${icons.checkCircle} Site oficial com tabela e ranking</td>
                 </tr>
                 <tr>
                   <td>Conformidade LGPD</td>
-                  <td class="col-before">${icons.x} Boa intenção</td>
-                  <td class="col-after">${icons.checkCircle} Documentada e auditável</td>
+                  <td class="col-before">${icons.x} Patrocinador não vê estrutura</td>
+                  <td class="col-after">${icons.checkCircle} Estrutura que o patrocinador respeita</td>
                 </tr>
                 <tr>
                   <td>Proposta de patrocínio</td>
-                  <td class="col-before">${icons.x} Estimativas em Word</td>
-                  <td class="col-after">${icons.checkCircle} Dados reais da competição</td>
+                  <td class="col-before">${icons.x} Árbitro sem súmula digital</td>
+                  <td class="col-after">${icons.checkCircle} Súmula digital por celular</td>
                 </tr>
               </tbody>
             </table>
@@ -120,34 +113,27 @@ export function render(app) {
 
         <div class="solution-numbers reveal">
           <div class="solution-number">
-            <div class="solution-number-value">850+</div>
+            <div class="solution-number-value">250+</div>
             <div class="solution-number-label">Organizações ativas</div>
           </div>
           <div class="solution-number">
-            <div class="solution-number-value">27</div>
-            <div class="solution-number-label">Estados</div>
+            <div class="solution-number-value">5</div>
+            <div class="solution-number-label">Dias para ir ao ar</div>
           </div>
           <div class="solution-number">
-            <div class="solution-number-value">R$15M+</div>
-            <div class="solution-number-label">Captados pelas ligas</div>
-          </div>
-          <div class="solution-number">
-            <div class="solution-number-value">98%</div>
-            <div class="solution-number-label">Satisfação</div>
+            <div class="solution-number-value">24/7 </div>
+            <div class="solution-number-label">Suporte ao cliente</div>
           </div>
         </div>
 
         <div class="solution-cta reveal">
           <div class="solution-cta-card">
             <h2>${firstName}, quer ver tudo isso <span class="gradient-text">funcionando na prática</span>?</h2>
-            <p>Agende uma apresentação personalizada. Um especialista em gestão esportiva vai entender o momento da sua competição. Sem compromisso, sem script de venda.</p>
             <button class="btn-primary btn-xl" id="btnAgendar">
-              Agendar apresentação personalizada ${icons.arrow}
+              Quero ver o jliga funcionando no meu campeonato ${icons.arrow}
             </button>
             <div class="solution-cta-trust">
-              <span>${icons.checkCircle} 100% gratuito</span>
-              <span>${icons.checkCircle} Sem compromisso</span>
-              <span>${icons.checkCircle} Personalizado para sua operação</span>
+              <span>${icons.checkCircle} Sem compromisso. Assista à demo, é gratuita e dura 20 minutos.</span>
             </div>
           </div>
         </div>
@@ -168,6 +154,6 @@ export function init() {
   });
 
   document.getElementById('btnAgendar').addEventListener('click', () => {
-    navigate('/agendar');
+    navigate('/reuniao');
   });
 }

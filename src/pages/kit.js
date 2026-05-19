@@ -24,8 +24,8 @@ export function render(app) {
         
         <div class="kit-header reveal">
           <span class="section-badge">Etapa 3 de 5</span>
-          <h1>${firstName}, aqui está seu <span class="gradient-text">Kit Completo</span></h1>
-          <p>3 materiais exclusivos para você aplicar imediatamente na sua operação. Baixe todos gratuitamente.</p>
+          <h1>${firstName}, <span class="gradient-text">Seus 3 bônus</span> estão prontos.</h1>
+          <p>Materiais prontos para você aplicar hoje mesmo no seu campeonato.</p>
         </div>
 
         <div class="kit-grid">
@@ -34,16 +34,12 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-1">
               ${icons.file}
             </div>
-            <div class="kit-card-tag">Bônus 1 — Google Slides</div>
-            <h3>Proposta de Patrocínio</h3>
-            <p>Template pronto com seções de contrapartida, métricas e valores sugeridos. Proposta sustentada por evidência, não por promessa.</p>
-            <div class="kit-card-cta-subtle">
-              <span>${icons.zap}</span>
-              <span>A jliga.club gera este documento automaticamente com dados reais da sua competição</span>
-            </div>
+            <h3>Modelo de Proposta de Patrocínio</h3>
+            <p>Proposta completa com os 6 elementos que fazem o patrocinador dizer sim. Edite e envie ainda hoje.</p>
+            
             <button class="btn-kit-download"
               data-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/edit?usp=sharing"
-              data-download-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/export/pdf"
+              data-download-url="https://docs.google.com/presentation/d/1z0_orBidVsJbqGYcXoWbFV7icceC6Xmy93DRYjMf0Os/edit?usp=sharing"
               data-filename="proposta-patrocinio.pdf">
               ${icons.download} Baixar Material
             </button>
@@ -54,16 +50,12 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-2">
               ${icons.chart}
             </div>
-            <div class="kit-card-tag">Bônus 2 — Google Sheets</div>
-            <h3>Planilha de Captação</h3>
-            <p>Planilha completa para organizar e acompanhar suas ações de captação de patrocinadores e verba pública para sua operação.</p>
-            <div class="kit-card-cta-subtle">
-              <span>${icons.zap}</span>
-              <span>A jliga.club gera relatórios auditáveis prontos para prestação de contas em editais</span>
-            </div>
+            <h3>Planilha de Prospecção de Patrocinadores</h3>
+            <p>Organize seus contatos, acompanhe cada negociação e nunca mais perca um follow-up.</p>
+            
             <button class="btn-kit-download"
               data-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/edit?usp=sharing"
-              data-download-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/export?format=xlsx"
+              data-download-url="https://docs.google.com/spreadsheets/d/1WFRPbfHWSiUCarK8b0rlj8kSVxiEmAQYVz4oV6V478M/edit?usp=sharing"
               data-filename="planilha-captacao.xlsx">
               ${icons.download} Baixar Material
             </button>
@@ -74,16 +66,12 @@ export function render(app) {
             <div class="kit-card-icon kit-icon-3">
               ${icons.clipboard}
             </div>
-            <div class="kit-card-tag">Bônus 3 — Google Slides</div>
-            <h3>Slides da Aula</h3>
-            <p>Apresentação completa com todos os conceitos, frameworks e estratégias abordados durante o mini curso. Consulte sempre que precisar.</p>
-            <div class="kit-card-cta-subtle">
-              <span>${icons.zap}</span>
-              <span>A jliga.club resolve 8 dos 10 itens deste checklist automaticamente</span>
-            </div>
+            <h3>Slides do Treinamento</h3>
+            <p>Material completo da aula para revisar, compartilhar com o time ou apresentar para outros gestores.</p>
+            
             <button class="btn-kit-download"
               data-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/edit?usp=sharing"
-              data-download-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/export/pdf"
+              data-download-url="https://docs.google.com/presentation/d/1KiRQWL_gx0HiLJeMCJUI_MHQj6MHQnDYu0NzKTnnUBI/edit?usp=sharing"
               data-filename="slides-aula.pdf">
               ${icons.download} Baixar Material
             </button>
@@ -93,10 +81,13 @@ export function render(app) {
         <div class="kit-bottom-cta reveal">
           <div class="kit-bottom-card">
             <div class="kit-bottom-icon">${icons.zap}</div>
-            <h2>E se existisse uma plataforma que <span class="gradient-text">estrutura tudo isso</span>?</h2>
-            <p>Gestão de atletas, financeiro, ranking, eventos, conformidade LGPD e relatórios para patrocinadores — tudo em um único ambiente.</p>
+            <h2>Um passo <span class="gradient-text">além</span>!</h2>
+            <p>
+            Os <span class="gradient-text"> melhores gestores que captam patrocinadores </span> têm uma coisa em comum: um campeonato com estrutura digital profissional. App próprio, site oficial, tabela automática. Isso comunica antes de qualquer conversa. 
+            <span class="gradient-text">Na próxima etapa você vai entender como isso funciona</span>.
+            </p>
             <button class="btn-primary" id="btnSolucao">
-              Descobrir a solução ${icons.arrow}
+              Ver como estruturar meu campeonato ${icons.arrow}
             </button>
           </div>
         </div>

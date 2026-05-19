@@ -2,7 +2,7 @@
 import icons from '../icons.js';
 import { navigate, getLeadData, setProgress, renderStepIndicator } from '../router.js';
 
-const TIMER_DURATION = 1 * 60; // 1 minute in seconds
+const REQUIRED_WATCH_SECONDS = 10 * 60; // 10 minutos de reprodução real
 
 export function render(app) {
   const lead = getLeadData();
@@ -21,34 +21,35 @@ export function render(app) {
     <main class="lesson-page">
       <div class="container">
         ${renderStepIndicator(2)}
-        
+
         <div class="lesson-greeting reveal">
           <span class="section-badge">Etapa 2 de 5</span>
           <h1>Olá, <span class="gradient-text">${firstName}</span></h1>
-          <p>Sua aula exclusiva está pronta. Assista com atenção — esse conteúdo vale ouro para sua operação.</p>
+          <hr width="50px" style="margin: 20px auto;" class=" justify-content center ">
+          <h2>Assista a aula completa<span class="gradient-text"> agora</span></h2>
+          <p>Alguns minutos que podem mudar como você capta patrocinadores para sempre.</p>
         </div>
 
         <div class="lesson-player-wrapper reveal">
           <div class="lesson-player" id="videoPlayer">
-            <div class="lesson-player-placeholder">
+            <div class="lesson-player-placeholder" id="playerPlaceholder">
               <div class="play-btn-wrapper">
                 <div class="play-btn">${icons.play}</div>
               </div>
               <p>O que separa competições comuns de operações que crescem e atraem patrocinadores</p>
-              <span class="lesson-duration">${icons.clock} 25 minutos</span>
+              <span class="lesson-duration">${icons.clock} 50 minutos</span>
             </div>
           </div>
         </div>
 
         <div class="lesson-info reveal">
           <div class="lesson-info-card">
-            <h3>Nesta aula você vai aprender:</h3>
+            <h3>O que você vai aprender:</h3>
             <ul class="lesson-topics">
-              <li>${icons.checkCircle} <span>Por que a maioria das competições não quebra por falta de esforço — quebra por falta de estrutura</span></li>
-              <li>${icons.checkCircle} <span>Como transformar dados de competição em argumentos de patrocínio</span></li>
-              <li>${icons.checkCircle} <span>O que é rastreabilidade de dados e por que patrocinadores exigem isso</span></li>
-              <li>${icons.checkCircle} <span>Como operar com conformidade LGPD e respaldo jurídico real</span></li>
-              <li>${icons.checkCircle} <span>Case real: organização que saiu da informalidade para operação com governança profissional</span></li>
+              <li>${icons.checkCircle} <span>A mentalidade certa — o que o patrocinador compra de verdade</span></li>
+              <li>${icons.checkCircle} <span>Como mapear os patrocinadores certos para o seu publico</span></li>
+              <li>${icons.checkCircle} <span>A abordagem inicial que abre portas sem parecer pedido</span></li>
+              <li>${icons.checkCircle} <span>Os 6 elementos da proposta que converte</span></li>
             </ul>
           </div>
         </div>
@@ -59,7 +60,7 @@ export function render(app) {
               <div class="timer-bar" id="timerBar"></div>
             </div>
             <p class="timer-text">
-              ${icons.lock} O botão será liberado em <span id="timerDisplay">01:00</span>
+              ${icons.lock} O botão será liberado após <span id="timerDisplay">10:00</span> de aula assistida
             </p>
           </div>
 
@@ -87,26 +88,41 @@ export function init() {
   const timerBar = document.getElementById('timerBar');
   const timerSection = document.getElementById('timerSection');
   const btnComplete = document.getElementById('btnComplete');
-  let remaining = TIMER_DURATION;
+  const placeholder = document.getElementById('playerPlaceholder');
 
-  const timerInterval = setInterval(() => {
-    remaining--;
-    const min = Math.floor(remaining / 60);
-    const sec = remaining % 60;
-    timerDisplay.textContent = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-    
-    const progress = ((TIMER_DURATION - remaining) / TIMER_DURATION) * 100;
-    timerBar.style.width = `${progress}%`;
+  let watchedSeconds = 0;
+  let watchInterval = null;
+  let ytPlayer = null;
+  let unlocked = false;
+  let clickedPlay = false;
 
-    if (remaining <= 0) {
-      clearInterval(timerInterval);
-      unlockButton();
+  function formatTime(seconds) {
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+  }
+
+  function tick() {
+    if (unlocked || !ytPlayer) return;
+    // YT.PlayerState.PLAYING === 1
+    if (ytPlayer.getPlayerState() === 1) {
+      watchedSeconds++;
+      const remaining = Math.max(0, REQUIRED_WATCH_SECONDS - watchedSeconds);
+      timerDisplay.textContent = formatTime(remaining);
+      const progress = (watchedSeconds / REQUIRED_WATCH_SECONDS) * 100;
+      timerBar.style.width = `${Math.min(progress, 100)}%`;
+
+      if (watchedSeconds >= REQUIRED_WATCH_SECONDS) {
+        unlocked = true;
+        clearInterval(watchInterval);
+        unlockButton();
+      }
     }
-  }, 1000);
+  }
 
   function unlockButton() {
     timerSection.innerHTML = `
-      <p class="timer-done">${icons.checkCircle} Aula concluída. Agora baixe seu Kit de Materiais gratuito.</p>
+      <p class="timer-done">${icons.checkCircle} Conclui a aula — quero meu kit.</p>
     `;
     btnComplete.disabled = false;
     btnComplete.innerHTML = `Concluí a aula — Quero meu Kit ${icons.arrow}`;
@@ -119,19 +135,57 @@ export function init() {
     navigate('/kit');
   });
 
-  const videoPlayer = document.getElementById('videoPlayer');
-  videoPlayer.addEventListener('click', () => {
-    videoPlayer.innerHTML = `
-      <iframe 
-        width="100%" 
-        height="100%" 
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" 
-        title="Aula: Gestão Esportiva Profissional" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;">
-      </iframe>
-    `;
+  function createPlayer() {
+    const videoContainer = document.getElementById('videoPlayer');
+    const playerDiv = document.createElement('div');
+    playerDiv.id = 'yt-player';
+    playerDiv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+    videoContainer.innerHTML = '';
+    videoContainer.appendChild(playerDiv);
+
+    ytPlayer = new YT.Player('yt-player', {
+      height: '100%',
+      width: '100%',
+      videoId: 'jsEubcSZ_UA',
+      playerVars: { autoplay: 1, rel: 0 },
+      events: {
+        onReady: () => {
+          watchInterval = setInterval(tick, 1000);
+        },
+      },
+    });
+  }
+
+  // Carrega a YouTube IFrame API preservando callbacks anteriores (SPA-safe)
+  function loadYouTubeAPI() {
+    return new Promise((resolve) => {
+      if (window.YT && window.YT.Player) {
+        resolve();
+        return;
+      }
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof prev === 'function') prev();
+        resolve();
+      };
+      if (!document.getElementById('yt-api-script')) {
+        const tag = document.createElement('script');
+        tag.id = 'yt-api-script';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(tag);
+      }
+    });
+  }
+
+  let apiReady = false;
+  loadYouTubeAPI().then(() => {
+    apiReady = true;
+    if (clickedPlay) createPlayer();
   });
+
+  placeholder.addEventListener('click', () => {
+    clickedPlay = true;
+    if (apiReady) createPlayer();
+    // se a API ainda não carregou, createPlayer() será chamado no .then() acima
+  }, { once: true });
 }

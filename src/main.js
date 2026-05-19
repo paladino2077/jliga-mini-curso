@@ -15,7 +15,7 @@ registerPages({
   '/aula': lessonPage,
   '/kit': kitPage,
   '/solucao': solutionPage,
-  '/agendar': schedulePage,
+  '/reuniao': schedulePage,
 });
 
 // Add global spin keyframe

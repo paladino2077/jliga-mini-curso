@@ -8,7 +8,7 @@ const ROUTES = {
   '/aula': { step: 2, guard: () => !!getLeadData() },
   '/kit': { step: 3, guard: () => getProgress().lessonCompleted },
   '/solucao': { step: 4, guard: () => getProgress().kitVisited },
-  '/agendar': { step: 5, guard: () => getProgress().solutionViewed },
+  '/reuniao': { step: 5, guard: () => getProgress().solutionViewed },
 };
 
 // ===== STATE MANAGEMENT =====
@@ -31,6 +31,15 @@ export function getLeadData() {
 
 export function setLeadData(data) {
   setState({ lead: data });
+}
+
+export function getDealRef() {
+  const state = getState();
+  return state.deal || null;
+}
+
+export function setDealRef(deal) {
+  setState({ deal });
 }
 
 export function getProgress() {
@@ -132,7 +141,7 @@ export function renderStepIndicator(currentStep) {
     { n: 2, label: 'Aula' },
     { n: 3, label: 'Kit' },
     { n: 4, label: 'Solução' },
-    { n: 5, label: 'Agendar' },
+    { n: 5, label: 'Reunião' },
   ];
 
   return `

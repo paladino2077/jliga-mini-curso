@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/deal_pipelines?token=6863e5587bc2d9001d3e53cf\")",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/deal_stages?token=6863e5587bc2d9001d3e53cf\")",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/deal_pipelines?token=6863e5587bc2d9001d3e53cf\" -o /tmp/pipelines.json)",
+      "Bash(python3 -c ' *)",
+      "PowerShell($data = Invoke-RestMethod -Uri \"https://crm.rdstation.com/api/v1/deal_pipelines?token=6863e5587bc2d9001d3e53cf\"; foreach \\($p in $data\\) { Write-Output \"PIPELINE: $\\($p.name\\) \\(id=$\\($p.id\\)\\)\"; foreach \\($s in $p.deal_stages\\) { Write-Output \"  STAGE: $\\($s.name\\) \\(id=$\\($s.id\\)\\) order=$\\($s.order\\)\" }; Write-Output \"\" })",
+      "PowerShell(npm run build 2>&1)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(Start-Sleep -Seconds 3; Get-NetTCPConnection -LocalPort 5173 -ErrorAction SilentlyContinue | Where-Object { $_.State -eq 'Listen' } | Select-Object LocalPort,State,OwningProcess | Format-Table)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf&deal_id=6a0cd635dec0d100170cdff1\" -o /tmp/act.json -D /tmp/act.headers)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -X POST https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf -H 'Content-Type: application/json' --data-binary '{\"activity\":{\"text\":\"Unicode-test: ação coração número\",\"deal_id\":\"6a0cd635dec0d100170cdff1\",\"user_id\":\"698a007290293f001684cb0b\"}}' -w 'HTTP %{http_code}\\\\n' -o /tmp/u.json)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf&deal_id=6a0cd635dec0d100170cdff1&limit=5\" -o /tmp/check.json)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/activities/6a0cd77ec980e50017541785?token=6863e5587bc2d9001d3e53cf\" -o /tmp/byid.json)",
+      "Bash(xxd)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf&deal_id=6a0cd635dec0d100170cdff1\" -o /tmp/list2.json)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf&limit=20\" -o /tmp/old.json)",
+      "Bash(perl -e 'open F, \"/tmp/old.json\"; binmode F; local $/; $_=<F>; while \\(/\\(.{0,5}n\\\\xc3\\\\xa3o.{0,5}\\)/g\\) { my $m = $1; my $hex = unpack\\(\"H*\", $m\\); print \"MATCH: $m\\\\n  HEX: $hex\\\\n\"; last if $. > 3 }')",
+      "Bash(perl -e 'open F, \"/tmp/old.json\"; binmode F; local $/; $_=<F>; while \\(/\\(.{0,5}n\\\\xc3\\\\x83\\\\xc2\\\\xa3o.{0,5}\\)/g\\) { my $m = $1; my $hex = unpack\\(\"H*\", $m\\); print \"MATCH \\(truncated\\): \" . substr\\($m, 0, 20\\) . \"\\\\n  HEX: $hex\\\\n\"; last }')",
+      "Bash(curl -s -X POST https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf -H 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'activity[text]=Form-test: ação coração número' --data-urlencode activity[deal_id]=6a0cd635dec0d100170cdff1 --data-urlencode activity[user_id]=698a007290293f001684cb0b -w 'HTTP %{http_code}\\\\n' -o /tmp/u.json)",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/activities?token=6863e5587bc2d9001d3e53cf&deal_id=6a0cd635dec0d100170cdff1&limit=2\")",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/deals/6a0cd635dec0d100170cdff1?token=6863e5587bc2d9001d3e53cf\" -o /tmp/d.json)",
+      "Bash(perl -e 'open F, \"/tmp/d.json\"; binmode F; local $/; $_=<F>; if \\(/\\(Integra.{1,4}\\)/\\) { print \"CHAR: $1\\\\n  HEX: \" . unpack\\(\"H*\", $1\\) . \"\\\\n\" }')",
+      "Bash(curl -s \"https://crm.rdstation.com/api/v1/tasks?token=6863e5587bc2d9001d3e53cf&deal_id=6a0cd635dec0d100170cdff1\" -o /tmp/t.json)",
+      "Bash(perl -e 'open F, \"/tmp/t.json\"; binmode F; local $/; $_=<F>; if \\(/Reuni.{1,4}/\\) { my $m = $&; print \"CHAR: $m\\\\n  HEX: \" . unpack\\(\"H*\", $m\\) . \"\\\\n\" }')",
+      "Bash(curl -s -X DELETE \"https://crm.rdstation.com/api/v1/deals/6a0cd635dec0d100170cdff1?token=6863e5587bc2d9001d3e53cf\" -w \"HTTP %{http_code}\\\\n\" -o /tmp/del.txt)"
+    ]
+  }
+}

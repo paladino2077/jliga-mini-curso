@@ -1,6 +1,7 @@
 // ===== ETAPA 1: PÁGINA DE CAPTURA =====
 import icons from '../icons.js';
-import { navigate, setLeadData, renderStepIndicator } from '../router.js';
+import { navigate, setLeadData, setDealRef, renderStepIndicator } from '../router.js';
+import { createDeal, createNote, assignNextUser } from '../services/rdstation.js';
 
 function generateCaptcha() {
   const a = Math.floor(Math.random() * 9) + 1;
@@ -37,20 +38,19 @@ export function render(app) {
       </div>
       <div class="hero-glow"></div>
       <div class="container">
-        <span class="section-badge">Plataforma de gestão esportiva</span>
+        <span class="section-badge">Minicurso Gratuito - Acesso Imediato</span>
         <h1>
-          <span class="line">Uma plataforma.</span>
-          <span class="line"><span class="gradient-text">Controle total</span></span>
-          <span class="line">da sua competição.</span>
+          <span class="line">Como Atrair</span>
+          <span class="line"><span class="gradient-text">Patrocinadores para o</span></span>
+          <span class="line">Seu Campeonato</span>
         </h1>
         <p class="subtitle">
-          Inscrições, tabelas, súmula digital, arbitragem e relatórios em um único ambiente.
-          Para ligas, federações e clubes que operam — ou desejam operar — com padrão profissional, em qualquer modalidade.
+          Como organizações esportivas profissionais estruturam a captação de patrocínio, e o que você pode aplicar no seu campeonato ainda esta semana.
         </p>
         <a href="#inscricao-section" class="btn-primary" id="heroCta">
           Falar com um especialista ${icons.arrow}
         </a>
-        <div class="hero-stats">
+       <!-- <div class="hero-stats">
           <div class="hero-stat">
             <div class="number" data-target="2300">0</div>
             <div class="label">Gestores cadastrados</div>
@@ -68,10 +68,11 @@ export function render(app) {
             <div class="label">Milhões captados</div>
           </div>
         </div>
+        -->
       </div>
     </section>
 
-    <!-- BENEFITS -->
+    <!-- BENEFITS 
     <section class="benefits" id="beneficios-section">
       <div class="container">
         <div style="text-align:center">
@@ -112,44 +113,35 @@ export function render(app) {
         </div>
       </div>
     </section>
+    -->
 
     <!-- HOW IT WORKS -->
     <section class="how-it-works" id="como-funciona-section">
       <div class="container">
         <div style="text-align:center">
-          <span class="section-badge">Como funciona</span>
         </div>
-        <h2>Seu caminho para <span class="gradient-text">profissionalizar a operação</span></h2>
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
-            <div class="timeline-step">Passo 1</div>
-            <h3>Preencha o formulário</h3>
-            <p>Conte um pouco sobre sua organização, volume de competição e principais desafios. Leva menos de 2 minutos.</p>
+            <h3>Aula Prática (Nível Básico)</h3>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
-            <div class="timeline-step">Passo 2</div>
-            <h3>Fale com um especialista</h3>
-            <p>Um especialista em gestão esportiva analisa o seu caso e entende o momento da sua operação — sem script de venda.</p>
+            <h3>3 bônus para download</h3>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
-            <div class="timeline-step">Passo 3</div>
-            <h3>Receba uma demonstração</h3>
-            <p>Veja a plataforma em uso com dados próximos à sua realidade. Você decide se faz sentido seguir.</p>
+            <h3>100% gratuito</h3>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
-            <div class="timeline-step">Passo 4</div>
-            <h3>Estruture sua competição</h3>
-            <p>Operação profissionalizada com governança real, dados auditáveis e respaldo jurídico — em qualquer modalidade.</p>
+            <h3>Sem enrolação</h3>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SOCIAL PROOF -->
+    <!-- SOCIAL PROOF 
     <section class="social-proof" id="depoimentos-section">
       <div class="container">
         <div style="text-align:center">
@@ -193,26 +185,29 @@ export function render(app) {
         </div>
       </div>
     </section>
+    -->
 
     <!-- CAPTURE FORM -->
     <section class="capture" id="inscricao-section">
       <div class="capture-glow"></div>
       <div class="container">
         <div class="capture-inner">
-          <span class="section-badge">Atendimento personalizado</span>
-          <h2>Preencha e fale com um <span class="gradient-text">especialista</span></h2>
-          <p class="capture-sub">Conte um pouco sobre sua operação. Um especialista em gestão esportiva vai entender o seu momento e mostrar como a jliga.club pode estruturar suas competições.</p>
-
+          <h2>Onde envio seu acesso <span class="gradient-text">gratuito?</span></h2>
           <form class="capture-form" id="captureForm" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="nome">Nome <span class="req">*</span></label>
+                <label for="nome">Nome completo <span class="req">*</span></label>
                 <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
               </div>
               <div class="form-group">
-                <label for="organizacao">Organização <span class="req">*</span></label>
+                <label for="organizacao">Nome da organização <span class="req">*</span></label>
                 <input type="text" id="organizacao" name="organizacao" placeholder="Liga, federação, clube" required />
               </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="telefone">WhatsApp (com DDD) <span class="req">*</span></label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(55) 11 99999-9999" required />
             </div>
 
             <div class="form-row">
@@ -220,10 +215,7 @@ export function render(app) {
                 <label for="email">E-mail <span class="req">*</span></label>
                 <input type="email" id="email" name="email" placeholder="seu@email.com" required />
               </div>
-              <div class="form-group">
-                <label for="telefone">WhatsApp <span class="req">*</span></label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(55) 11 99999-9999" required />
-              </div>
+              
             </div>
 
             <div class="form-row">
@@ -231,11 +223,11 @@ export function render(app) {
                 <label for="cargo">Cargo <span class="req">*</span></label>
                 <select id="cargo" name="cargo" required>
                   <option value="" disabled selected>Selecione seu cargo</option>
-                  <option>Presidente</option>
-                  <option>Diretor(a)</option>
-                  <option>Gestor(a) de competições</option>
-                  <option>Coordenador(a)</option>
-                  <option>Árbitro / Mesário</option>
+                  <option>Presidente da Liga/Federação</option>
+                  <option>Diretor(a) Esportivo</option>
+                  <option>Gestor(a) de Campeonato</option>
+                  <option>Secretário(a) de Esportes</option>
+                  <option>Organizador de Evento</option>
                   <option>Outro</option>
                 </select>
               </div>
@@ -243,22 +235,32 @@ export function render(app) {
                 <label for="volume">Volume de competição <span class="req">*</span></label>
                 <select id="volume" name="volume" required>
                   <option value="" disabled selected>Competições por ano</option>
-                  <option>Até 3 por ano</option>
-                  <option>4 a 10 por ano</option>
-                  <option>11 a 20 por ano</option>
-                  <option>Mais de 20 por ano</option>
+                  <option>Até 4 competições</option>
+                  <option>5 a 10</option>
+                  <option>11 a 20</option>
+                  <option>Mais de 20</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="base">Base de atletas <span class="req">*</span></label>
+              <label for="base">Volume de inscrições por edição <span class="req">*</span></label>
               <select id="base" name="base" required>
-                <option value="" disabled selected>Quantidade de atletas ativos</option>
-                <option>Até 100 atletas</option>
-                <option>100 a 500 atletas</option>
-                <option>500 a 2.000 atletas</option>
-                <option>Mais de 2.000 atletas</option>
+                <option value="" disabled selected>Quantidade de atletas</option>
+                <option>Até 50 atletas/equipes</option>
+                <option>51 a 150</option>
+                <option>151 a 500</option>
+                <option>Mais de 500</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cliente">Já é cliente jliga.club <span class="req">*</span></label>
+              <select id="cliente" name="cliente" required>
+                <option>Não, ainda não conheço</option>
+                <option>Não, mas já ouvi falar</option>
+                <option>Já testei, mas não assino</option>
+                <option>Sim, já sou cliente</option>
               </select>
             </div>
 
@@ -276,10 +278,10 @@ export function render(app) {
             </div>
 
             <button type="submit" class="btn-primary" id="submitBtn">
-              Enviar e falar com especialista ${icons.arrow}
+              Quero meu acesso gratuito ${icons.arrow}
             </button>
             <p class="form-disclaimer">
-              ${icons.lock} Seus dados estão seguros. Plataforma adequada à LGPD.
+              ${icons.lock} Seus dados estão seguros.
             </p>
           </form>
         </div>
@@ -288,7 +290,7 @@ export function render(app) {
 
     <!-- URGENCY BAR -->
     <div class="urgency-bar">
-      Mais de <span id="vagasCount">2.347</span> gestores já estruturam suas competições com a jliga.club
+      Mais de <span id="vagasCount">250</span> organizações esportivas no Brasil ja usam a jliga.club
     </div>
 
     <!-- FOOTER -->
@@ -355,7 +357,7 @@ export function init() {
   });
 
   const form = document.getElementById('captureForm');
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const captchaInput = document.getElementById('captcha');
@@ -387,40 +389,66 @@ export function init() {
       cargo: document.getElementById('cargo').value,
       volume: document.getElementById('volume').value,
       base: document.getElementById('base').value,
+      cliente: document.getElementById('cliente').value,
       problemas: document.getElementById('problemas').value.trim(),
       registeredAt: new Date().toISOString(),
     };
 
-    // RD Station CRM Integration
-    const users = ['6989fcbfefae53001e87c939', '698a007290293f001684cb0b']; // Kátia and Joicy
-    const randomUser = users[Math.floor(Math.random() * users.length)];
+    setLeadData(data);
 
-    const rdPayload = {
-      deal: {
-        name: `Lead: ${data.nome} - ${data.organizacao} (${data.cargo} · ${data.volume})`,
-        user_id: randomUser,
-        contacts: [{
+    try {
+      const userId = await Promise.race([
+        assignNextUser(),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('assign timeout')), 3000)),
+      ]);
+
+      const result = await Promise.race([
+        createDeal({
           name: data.nome,
-          emails: [{ email: data.email }],
-          phones: [{ phone: data.telefone }]
-        }]
+          organization: data.organizacao,
+          email: data.email,
+          phone: data.telefone,
+          role: data.cargo,
+          volume: data.volume,
+          userId,
+        }),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('createDeal timeout')), 4000)),
+      ]);
+      const dealId = result?._id || result?.id;
+      if (dealId) {
+        setDealRef({ id: dealId, userId });
+        createNote({
+          dealId,
+          userId,
+          text: buildCaptureNote(data),
+        }).catch(err => console.error('RD Station capture note:', err));
       }
-    };
+    } catch (err) {
+      console.error('RD Station capture flow:', err);
+    }
 
-    // Fire and forget so we don't block the user navigation
-    fetch('https://crm.rdstation.com/api/v1/deals?token=6863e5587bc2d9001d3e53cf', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(rdPayload)
-    }).catch(err => console.error('RD Station Error:', err));
-
-    setTimeout(() => {
-      setLeadData(data);
-      navigate('/aula');
-    }, 1200);
+    navigate('/aula');
   });
 
   document.getElementById('captcha').addEventListener('input', (e) => {
     e.target.setCustomValidity('');
   });
+}
+
+function buildCaptureNote(d) {
+  return (
+    `Lead capturado via mini-curso jliga.club\n\n` +
+    `--- Contato ---\n` +
+    `Nome: ${d.nome || '-'}\n` +
+    `Organizacao: ${d.organizacao || '-'}\n` +
+    `Cargo: ${d.cargo || '-'}\n` +
+    `WhatsApp: ${d.telefone || '-'}\n` +
+    `E-mail: ${d.email || '-'}\n\n` +
+    `--- Perfil ---\n` +
+    `Volume de competicao: ${d.volume || '-'}\n` +
+    `Volume de inscricoes por edicao: ${d.base || '-'}\n` +
+    `Status com a jliga: ${d.cliente || '-'}\n\n` +
+    `--- Principais problemas relatados ---\n` +
+    `${d.problemas || '-'}`
+  );
 }
