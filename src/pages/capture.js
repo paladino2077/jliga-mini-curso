@@ -3,34 +3,8 @@ import icons from '../icons.js';
 import { navigate, setLeadData, setDealRef, renderStepIndicator } from '../router.js';
 import { createDeal, createNote, assignNextUser } from '../services/rdstation.js';
 
-function generateCaptcha() {
-  const a = Math.floor(Math.random() * 9) + 1;
-  const b = Math.floor(Math.random() * 9) + 1;
-  return { a, b, answer: a + b };
-}
-
-let captcha = generateCaptcha();
-
 export function render(app) {
-  captcha = generateCaptcha();
-
   app.innerHTML = `
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-      <div class="container">
-        <a href="#/" class="nav-logo"><img src="/logo.png" alt="jliga.club"></a>
-        <div class="nav-links" id="navLinks">
-          <a href="#beneficios-section">Benefícios</a>
-          <a href="#como-funciona-section">Como Funciona</a>
-          <a href="#depoimentos-section">Depoimentos</a>
-          <a href="#inscricao-section" class="nav-cta">Falar com especialista</a>
-        </div>
-        <button class="nav-mobile-btn" id="navMobileBtn" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-
     <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero-bg">
@@ -47,9 +21,6 @@ export function render(app) {
         <p class="subtitle">
           Como organizações esportivas profissionais estruturam a captação de patrocínio, e o que você pode aplicar no seu campeonato ainda esta semana.
         </p>
-        <a href="#inscricao-section" class="btn-primary" id="heroCta">
-          Falar com um especialista ${icons.arrow}
-        </a>
        <!-- <div class="hero-stats">
           <div class="hero-stat">
             <div class="number" data-target="2300">0</div>
@@ -264,19 +235,6 @@ export function render(app) {
               </select>
             </div>
 
-            <div class="form-group">
-              <label for="problemas">Principais problemas hoje <span class="req">*</span></label>
-              <textarea id="problemas" name="problemas" rows="4" placeholder="Descreva os desafios ou riscos que você enfrenta na gestão da sua competição..." required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="captcha">Verificação de segurança <span class="req">*</span></label>
-              <div class="captcha-row">
-                <span class="captcha-question" id="captchaQuestion">${captcha.a} + ${captcha.b} =</span>
-                <input type="text" id="captcha" name="captcha" inputmode="numeric" autocomplete="off" placeholder="?" required />
-              </div>
-            </div>
-
             <button type="submit" class="btn-primary" id="submitBtn">
               Quero meu acesso gratuito ${icons.arrow}
             </button>
@@ -303,18 +261,6 @@ export function render(app) {
 }
 
 export function init() {
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  const mobileBtn = document.getElementById('navMobileBtn');
-  const navLinks = document.getElementById('navLinks');
-  mobileBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -360,19 +306,6 @@ export function init() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const captchaInput = document.getElementById('captcha');
-    const userAnswer = parseInt(captchaInput.value, 10);
-    if (userAnswer !== captcha.answer) {
-      captchaInput.focus();
-      captchaInput.setCustomValidity('Resposta incorreta. Tente novamente.');
-      captchaInput.reportValidity();
-      captcha = generateCaptcha();
-      document.getElementById('captchaQuestion').textContent = `${captcha.a} + ${captcha.b} =`;
-      captchaInput.value = '';
-      setTimeout(() => captchaInput.setCustomValidity(''), 100);
-      return;
-    }
-
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
@@ -390,7 +323,6 @@ export function init() {
       volume: document.getElementById('volume').value,
       base: document.getElementById('base').value,
       cliente: document.getElementById('cliente').value,
-      problemas: document.getElementById('problemas').value.trim(),
       registeredAt: new Date().toISOString(),
     };
 
@@ -429,10 +361,6 @@ export function init() {
 
     navigate('/aula');
   });
-
-  document.getElementById('captcha').addEventListener('input', (e) => {
-    e.target.setCustomValidity('');
-  });
 }
 
 function buildCaptureNote(d) {
@@ -447,8 +375,6 @@ function buildCaptureNote(d) {
     `--- Perfil ---\n` +
     `Volume de competicao: ${d.volume || '-'}\n` +
     `Volume de inscricoes por edicao: ${d.base || '-'}\n` +
-    `Status com a jliga: ${d.cliente || '-'}\n\n` +
-    `--- Principais problemas relatados ---\n` +
-    `${d.problemas || '-'}`
+    `Status com a jliga: ${d.cliente || '-'}`
   );
 }

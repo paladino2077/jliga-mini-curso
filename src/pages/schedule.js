@@ -1,9 +1,20 @@
 // ===== ETAPA 5: AGENDAR APRESENTAÇÃO =====
 import icons from '../icons.js';
 import { getLeadData, getDealRef, setProgress, renderStepIndicator, showToast } from '../router.js';
-import { updateDealStage, createTask, createNote, STAGES, assignNextUser } from '../services/rdstation.js';
+import { updateDealStage, createTask, createNote, STAGES, USERS, assignNextUser } from '../services/rdstation.js';
 
-const WHATSAPP_NUMBER = '5511999999999'; // PLACEHOLDER — substituir pelo número real
+// Mapa user_id (RD Station) → WhatsApp da vendedora.
+// Mantém o WhatsApp final na MESMA pessoa que recebeu o lead no CRM —
+// se Kátia ficou com o deal, é o WhatsApp dela que abre; idem para Joicy.
+const WHATSAPP_BY_USER = {
+  [USERS.KATIA]: '5544988576700',  // +55 44 9 8857-6700
+  [USERS.JOICY]: '5521974778849',  // +55 21 97477-8849
+};
+const WHATSAPP_FALLBACK = WHATSAPP_BY_USER[USERS.KATIA];
+
+function whatsappFor(userId) {
+  return WHATSAPP_BY_USER[userId] || WHATSAPP_FALLBACK;
+}
 
 const PERIODS = [
   { label: 'Manhã', sublabel: '9h às 12h' },
@@ -189,6 +200,11 @@ export function init() {
       selectedPeriodSublabel,
     });
 
+    // Usa o WhatsApp da vendedora que recebeu o lead no CRM (round-robin
+    // resolvido no momento do cadastro, persistido em dealRef.userId).
+    const ref = getDealRef();
+    const targetNumber = whatsappFor(ref?.userId);
+
     const message = encodeURIComponent(
       `Olá! Sou ${lead?.nome || 'gestor esportivo'}` +
       `${lead?.cargo ? ` (${lead.cargo})` : ''}, ` +
@@ -199,7 +215,7 @@ export function init() {
       `Aguardo a confirmação!`
     );
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    const url = `https://wa.me/${targetNumber}?text=${message}`;
     showToast('Redirecionando para o WhatsApp...');
     setTimeout(() => window.open(url, '_blank'), 800);
   });
