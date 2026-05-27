@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/rd-api/:path*",
+      "destination": "https://crm.rdstation.com/api/v1/:path*"
+    }
+  ]
+}
